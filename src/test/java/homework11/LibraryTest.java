@@ -40,8 +40,8 @@ public class LibraryTest {
         System.out.println("\n############# Test3 search #############");
 
         libraryFunc.searchItem("Stevenson");
-        libraryFunc.searchItem("Spiegel");
-        libraryFunc.searchItem("West");
+        //libraryFunc.searchItem("Spiegel");
+        libraryFunc.searchItem("Magazine");
 
 
     }

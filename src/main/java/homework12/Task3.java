@@ -8,7 +8,7 @@ public class Task3 {
         String[] cowNames = {"Rose", "Darla", "Meg", "Dahlia", "Margie", "Lois", "Flower", "Maggie", "Jasmine", "Minnie"};
 
 
-        Map<String, Cow> cowHashMap = new HashMap<>();
+        Map<String, Cow> cowHashMap = new HashMap<String, Cow>() ;
 
         for (String str : cowNames) {
             Cow cow = new Cow(str);
@@ -16,8 +16,9 @@ public class Task3 {
         }
 
 
+
         for (Map.Entry<String, Cow> entry : cowHashMap.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue().getName());
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         }
 
     }
@@ -31,6 +32,9 @@ class Cow {
     }
 
     public String getName() {
+        return name;
+    }
+    public String toString() {
         return name;
     }
 }
