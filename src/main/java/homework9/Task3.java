@@ -1,13 +1,13 @@
 package homework9;
+
 import java.util.Arrays;
 
 public class Task3 {
-    public static String removeString(String str1, String[] removeChars) {
+    public static String removeString(String str, String[] removeChars) {
 
-        int len = removeChars.length;
-        String temp = str1;
+        String temp = str;
 
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < removeChars.length; i++) {
             temp = temp.replaceAll(removeChars[i], "");
         }
 
