@@ -20,7 +20,6 @@ public class CheckPhoneNumbersTest extends Template {
     @Test(groups = "Check PhoneNumbers", dataProvider = "validNumbers")
     public void isValidPhoneNumbers(String phoneNumber) {
         assertTrue(Task4.checkPhoneNumber(phoneNumber));
-        assertTrue(Task4.checkPhoneNumber(phoneNumber));
     }
 
 
@@ -35,7 +34,6 @@ public class CheckPhoneNumbersTest extends Template {
 
     @Test(groups = "Check PhoneNumbers", dataProvider = "invalidNumbers")
     public void isInvalidPhoneNumbers(String phoneNumber) {
-        assertFalse(Task4.checkPhoneNumber(phoneNumber));
         assertFalse(Task4.checkPhoneNumber(phoneNumber));
     }
 }
