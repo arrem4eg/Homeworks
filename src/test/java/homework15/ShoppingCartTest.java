@@ -40,8 +40,8 @@ public class ShoppingCartTest extends FuncCart {
 
         // Check the total sum in the cart
         BigDecimal subtotalInCart = new BigDecimal(getProductInfoByClass(subtotal).replaceAll("\\$ ", ""));
-        BigDecimal sum = getSumItemInCart();
-        assertEquals(subtotalInCart, sum);
+        BigDecimal sumAllItemsInCart = getSumItemInCart();
+        assertEquals(subtotalInCart, sumAllItemsInCart);
 
         // Check the visibility of the CHECKOUT button
         assertTrue(driver.findElement(By.className(checkout)).isDisplayed());
