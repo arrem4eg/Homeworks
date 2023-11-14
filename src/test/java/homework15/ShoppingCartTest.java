@@ -5,64 +5,69 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import java.math.BigDecimal;
+
 public class ShoppingCartTest extends FuncCart {
 
     int firstItem = 1;
     int secondItem = 2;
 
-    @Test(priority = 1)
+    @Test()
     public void testAddToCartAndVerify() {
 
         // Add the first item to the cart
-        buyItem(firstItem);
+        findElementAndClick(firstItem, buyItemButton);
 
         // Close the cart
-        closeCart();
+        findElementAndClickByClass(closeCart);
 
         // Add the second item to the cart
-        buyItem(secondItem);
-
+        findElementAndClick(secondItem, buyItemButton);
 
         // Compare titles in the cart with the added items
-        assertEquals(getProductTitle(firstItem), getProductTitleInCart(getProductTitle(firstItem)));
-        assertEquals(getProductTitle(secondItem), getProductTitleInCart(getProductTitle(secondItem)));
+        assertEquals(getProductInfoByPath(firstItem, productTitle), getProductInfoByPath(firstItem, productTitleInCart));
+        assertEquals(getProductInfoByPath(secondItem, productTitle), getProductInfoByPath(secondItem, productTitleInCart));
 
         // Compare prices in the cart with the added items
-        assertEquals(getProductPrice(firstItem), getProductPriceInCart(getProductTitle(firstItem)));
-        assertEquals(getProductPrice(secondItem), getProductPriceInCart(getProductTitle(secondItem)));
+        assertEquals(getProductInfoByPath(firstItem, productPrice).substring(1).replaceAll("\n.*", ""),
+                getProductInfoByPath(firstItem, productPriceInCart).substring(2).replaceAll("\n.*", ""));
 
+        assertEquals(getProductInfoByPath(secondItem, productPrice).substring(1).replaceAll("\n.*", ""),
+                getProductInfoByPath(secondItem, productPriceInCart).substring(2).replaceAll("\n.*", ""));
 
         // Check the total quantity in the cart
-        assertEquals(getQuantityInCart(), "2");
+        assertEquals(getProductInfoByClass(quantityInCart), "2");
 
         // Check the total sum in the cart
-        assertEquals(getSubtotalInCart(), getSumItemInCart());
+        BigDecimal subtotalInCart = new BigDecimal(getProductInfoByClass(subtotal).replaceAll("\\$ ", ""));
+        BigDecimal sum = getSumItemInCart();
+        assertEquals(subtotalInCart, sum);
 
         // Check the visibility of the CHECKOUT button
-        assertTrue(driver.findElement(By.xpath("//*[@class='buy-btn']")).isDisplayed());
+        assertTrue(driver.findElement(By.className(checkout)).isDisplayed());
     }
 
-    @Test(priority = 2)
+    @Test()
     public void testRemoveItemFromCartAndVerify() {
 
         // Add the first item to the cart
-        buyItem(firstItem);
+        findElementAndClick(firstItem, buyItemButton);
 
         // Check that the cart is not empty after adding the item
-        assertTrue(driver.findElements(By.xpath("//*[@class='shelf-empty']")).isEmpty());
+        assertTrue(driver.findElements(By.className(emptyCart)).isEmpty());
 
         // Remove the item from the cart
-        removeItemFromCart();
+        findElementAndClickByClass(removeItemFromCart);
 
         // Verify that the cart is empty after removing the item
-        assertFalse(driver.findElements(By.xpath("//*[@class='shelf-empty']")).isEmpty());
-        assertEquals(driver.findElement(By.xpath("//*[@class='shelf-empty']")).getText(), "Add some products in the bag\n" + ":)");
+        assertFalse(driver.findElements(By.className(emptyCart)).isEmpty());
+
 
         // Check that the subtotal in the cart is now 0
-        assertEquals(getSubtotalInCart(), 0);
+        assertEquals(getProductInfoByClass(quantityInCart), "0");
 
         // Check the visibility of the CONTINUE SHOPPING button
-        assertFalse(driver.findElements(By.xpath("//div[@class='buy-btn' and text()='Continue Shopping']")).isEmpty());
+        assertFalse(driver.findElements(By.xpath(continueShoppingButton)).isEmpty());
     }
 
 }

@@ -1,24 +1,18 @@
 package homework15;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
-import java.time.Duration;
-
 public class Base {
 
     static WebDriver driver;
-    static WebDriverWait wait;
 
     @BeforeTest
     public static void beforeTest() {
@@ -39,15 +33,10 @@ public class Base {
         driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.get("https://www.bstackdemo.com/");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
     @AfterMethod
     public static void afterMethod() throws InterruptedException {
-        Thread.sleep(2000);
         driver.quit();
     }
-
-
 }
