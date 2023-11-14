@@ -50,7 +50,7 @@ public class FuncCart extends Base {
     BigDecimal getSumItemInCart() {
         // Loop through the items in the cart and calculate the sum
         BigDecimal sum = BigDecimal.valueOf(0);
-        for (int i = 1; i < Integer.parseInt(getProductInfoByClass(quantityInCart)) + 1; i++) {
+        for (int i = 1; i <= Integer.parseInt(getProductInfoByClass(quantityInCart)); i++) {
             BigDecimal temp = new BigDecimal(getProductInfoByPath(i, productPriceInCart).substring(2).replaceAll("\n.*", ""));
             sum = sum.add(temp);
         }
