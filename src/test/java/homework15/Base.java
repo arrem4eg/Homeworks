@@ -36,7 +36,7 @@ public class Base {
     }
 
     @AfterMethod
-    public static void afterMethod() throws InterruptedException {
+    public static void afterMethod() {
         driver.quit();
     }
 }
