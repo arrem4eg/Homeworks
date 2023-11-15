@@ -28,6 +28,13 @@ public class ShoppingCartTest extends FuncCart {
         assertEquals(getProductInfoByPath(firstItem, productTitle), getProductInfoByPath(firstItem, productTitleInCart));
         assertEquals(getProductInfoByPath(secondItem, productTitle), getProductInfoByPath(secondItem, productTitleInCart));
 
+        // Check if the titles of the items match
+        assertEquals(getProductInfoByPath(firstItem, productTitle), "iPhone 12");
+        assertEquals(getProductInfoByPath(firstItem, productTitleInCart), "iPhone 12");
+        assertEquals(getProductInfoByPath(secondItem, productTitle), "iPhone 12 Mini");
+        assertEquals(getProductInfoByPath(secondItem, productTitleInCart), "iPhone 12 Mini");
+
+
         // Compare prices in the cart with the added items
         assertEquals(getProductInfoByPath(firstItem, productPrice).substring(1).replaceAll("\n.*", ""),
                 getProductInfoByPath(firstItem, productPriceInCart).substring(2).replaceAll("\n.*", ""));
@@ -35,13 +42,21 @@ public class ShoppingCartTest extends FuncCart {
         assertEquals(getProductInfoByPath(secondItem, productPrice).substring(1).replaceAll("\n.*", ""),
                 getProductInfoByPath(secondItem, productPriceInCart).substring(2).replaceAll("\n.*", ""));
 
+        // Check if the prices of the items match
+        assertEquals(getProductInfoByPath(firstItem, productPrice).substring(1).replaceAll("\n.*", ""), "799.00");
+        assertEquals(getProductInfoByPath(firstItem, productPriceInCart).substring(2).replaceAll("\n.*", ""), "799.00");
+        assertEquals(getProductInfoByPath(secondItem, productPrice).substring(1).replaceAll("\n.*", ""), "699.00");
+        assertEquals(getProductInfoByPath(secondItem, productPriceInCart).substring(2).replaceAll("\n.*", ""), "699.00");
+
         // Check the total quantity in the cart
         assertEquals(getProductInfoByClass(quantityInCart), "2");
 
         // Check the total sum in the cart
-        BigDecimal subtotalInCart = new BigDecimal(getProductInfoByClass(subtotal).replaceAll("\\$ ", ""));
-        BigDecimal sumAllItemsInCart = getSumItemInCart();
+        String subtotalInCart = getProductInfoByClass(subtotal).replaceAll("\\$ ", "");
+        String sumAllItemsInCart = getSumItemInCart();
         assertEquals(subtotalInCart, sumAllItemsInCart);
+        assertEquals(subtotalInCart,"1498.00");
+        assertEquals(sumAllItemsInCart, "1498.00");
 
         // Check the visibility of the CHECKOUT button
         assertTrue(driver.findElement(By.className(checkout)).isDisplayed());
@@ -63,8 +78,12 @@ public class ShoppingCartTest extends FuncCart {
         assertFalse(driver.findElements(By.className(emptyCart)).isEmpty());
 
 
-        // Check that the subtotal in the cart is now 0
+        // Check that the quantity in the cart is now 0
         assertEquals(getProductInfoByClass(quantityInCart), "0");
+
+        // Ensure the subtotal is zero after removing all items
+        assertEquals(getProductInfoByClass(subtotal).replaceAll("\\$ ", ""), "0.00");
+
 
         // Check the visibility of the CONTINUE SHOPPING button
         assertFalse(driver.findElements(By.xpath(continueShoppingButton)).isEmpty());
