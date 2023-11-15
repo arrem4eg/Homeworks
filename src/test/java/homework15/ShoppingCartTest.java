@@ -24,23 +24,11 @@ public class ShoppingCartTest extends FuncCart {
         // Add the second item to the cart
         findElementAndClick(secondItem, buyItemButton);
 
-        // Compare titles in the cart with the added items
-        assertEquals(getProductInfoByPath(firstItem, productTitle), getProductInfoByPath(firstItem, productTitleInCart));
-        assertEquals(getProductInfoByPath(secondItem, productTitle), getProductInfoByPath(secondItem, productTitleInCart));
-
         // Check if the titles of the items match
         assertEquals(getProductInfoByPath(firstItem, productTitle), "iPhone 12");
         assertEquals(getProductInfoByPath(firstItem, productTitleInCart), "iPhone 12");
         assertEquals(getProductInfoByPath(secondItem, productTitle), "iPhone 12 Mini");
         assertEquals(getProductInfoByPath(secondItem, productTitleInCart), "iPhone 12 Mini");
-
-
-        // Compare prices in the cart with the added items
-        assertEquals(getProductInfoByPath(firstItem, productPrice).substring(1).replaceAll("\n.*", ""),
-                getProductInfoByPath(firstItem, productPriceInCart).substring(2).replaceAll("\n.*", ""));
-
-        assertEquals(getProductInfoByPath(secondItem, productPrice).substring(1).replaceAll("\n.*", ""),
-                getProductInfoByPath(secondItem, productPriceInCart).substring(2).replaceAll("\n.*", ""));
 
         // Check if the prices of the items match
         assertEquals(getProductInfoByPath(firstItem, productPrice).substring(1).replaceAll("\n.*", ""), "799.00");
@@ -55,7 +43,7 @@ public class ShoppingCartTest extends FuncCart {
         String subtotalInCart = getProductInfoByClass(subtotal).replaceAll("\\$ ", "");
         String sumAllItemsInCart = getSumItemInCart();
         assertEquals(subtotalInCart, sumAllItemsInCart);
-        assertEquals(subtotalInCart,"1498.00");
+        assertEquals(subtotalInCart, "1498.00");
         assertEquals(sumAllItemsInCart, "1498.00");
 
         // Check the visibility of the CHECKOUT button
