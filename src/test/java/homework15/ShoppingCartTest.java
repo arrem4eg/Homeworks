@@ -42,7 +42,6 @@ public class ShoppingCartTest extends FuncCart {
         // Check the total sum in the cart
         String subtotalInCart = getProductInfoByClass(subtotal).replaceAll("\\$ ", "");
         String sumAllItemsInCart = getSumItemInCart();
-        assertEquals(subtotalInCart, sumAllItemsInCart);
         assertEquals(subtotalInCart, "1498.00");
         assertEquals(sumAllItemsInCart, "1498.00");
 
