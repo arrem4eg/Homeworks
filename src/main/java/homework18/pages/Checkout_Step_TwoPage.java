@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Checkout_Step_TwoPage extends BasePage {
 
+
     @FindBy(id = "finish")
     WebElement finishButton;
 

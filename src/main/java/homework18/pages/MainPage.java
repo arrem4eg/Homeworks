@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BasePage {
 
+
     @FindBy(id = "user-name")
     WebElement userNameField;
 

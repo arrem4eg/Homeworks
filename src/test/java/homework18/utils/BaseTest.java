@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeTest;
 
 public abstract class BaseTest {
 
+
     protected static WebDriver driver;
 
     @BeforeTest

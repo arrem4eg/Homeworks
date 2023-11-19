@@ -9,6 +9,7 @@ public class SaucedemoComTest extends BaseTest {
     @Test
     public void BuyItemMaxPrice() {
 
+
         InventoryPage buyAndBackInventoryPage = openMainPage()
                 .login("standard_user", "secret_sauce")
                 .buyItemMaxPrice()

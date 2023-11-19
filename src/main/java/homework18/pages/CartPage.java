@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage {
 
+
     @FindBy(id = "checkout")
     WebElement checkoutButton;
 

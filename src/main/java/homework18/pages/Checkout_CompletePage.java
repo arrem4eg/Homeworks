@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Checkout_CompletePage extends BasePage {
 
+
     @FindBy(id = "back-to-products")
     WebElement backHomeButton;
 

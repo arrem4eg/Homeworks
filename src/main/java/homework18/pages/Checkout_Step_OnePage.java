@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Checkout_Step_OnePage extends BasePage {
 
+
     @FindBy(id = "first-name")
     WebElement firstNameField;
 

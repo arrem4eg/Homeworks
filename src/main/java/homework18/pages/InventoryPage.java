@@ -10,6 +10,7 @@ import java.util.List;
 
 public class InventoryPage extends BasePage {
 
+
     @FindBy(css = ".shopping_cart_link")
     WebElement cartLink;
 
