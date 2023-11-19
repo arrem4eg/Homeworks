@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="HomeWork18">
+    <test name="All Tests">
+        <classes>
+            <class name="homework18.tests.SaucedemoComTest"/>
+        </classes>
+    </test>
+</suite>
