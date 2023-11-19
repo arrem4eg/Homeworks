@@ -41,5 +41,5 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.6.1</version>
         </dependency>
-    </dependencies>
+     </dependencies>
 </project>
