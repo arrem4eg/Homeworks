@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BasePage {
 
-    @FindBy(xpath = "//a[@href='/contact_us']")
+    @FindBy(xpath = "//*[@href='/contact_us']")
     WebElement contactUsButton;
 
     public MainPage(WebDriver driver) {

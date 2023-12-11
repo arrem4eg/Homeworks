@@ -1,5 +1,6 @@
 package homework19.tests;
 
+import homework19.pages.ContactUsPage;
 import homework19.utils.BaseTest;
 import org.testng.annotations.Test;
 
@@ -9,10 +10,11 @@ public class AutomationexerciseTest extends BaseTest {
 
     @Test
     public void checkStatusMessage() {
+
         String status = openMainPage()
                 .pressContactUsButton()
-                .fillFields()
-                .uploadFile()
+                .fillFields(props.getData("name"), props.getData("email"), props.getData("subject"), props.getData("message"))
+                .uploadFile(props.getData("uploadFile"))
                 .pressSubmitButton()
                 .getStatusMessage();
 

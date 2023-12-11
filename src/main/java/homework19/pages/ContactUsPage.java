@@ -36,16 +36,16 @@ public class ContactUsPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public ContactUsPage fillFields() {
-        setText(nameField, getData("name"));
-        setText(emailField, getData("email"));
-        setText(subjectField, getData("subject"));
-        setText(messageField, getData("message"));
+    public ContactUsPage fillFields(String name, String email, String subject, String message) {
+        setText(nameField, name);
+        setText(emailField, email);
+        setText(subjectField, subject);
+        setText(messageField, message);
         return this;
     }
 
-    public ContactUsPage uploadFile() {
-        setText(uploadField, new File(getData("uploadFile")).getAbsolutePath());
+    public ContactUsPage uploadFile(String uploadFile) {
+        setText(uploadField, new File(uploadFile).getAbsolutePath());
         return this;
     }
 
