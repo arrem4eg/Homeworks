@@ -1,9 +1,10 @@
 package homework21;
 
 import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selenide.$;
 
-public class Checkout_Step_OnePage  {
+public class Checkout_Step_OnePage {
     private static final SelenideElement firstNameElement = $("#first-name");
     private static final SelenideElement lastNameElement = $("#last-name");
     private static final SelenideElement postCodeElement = $("#postal-code");
