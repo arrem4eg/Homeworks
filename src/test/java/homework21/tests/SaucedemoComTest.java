@@ -16,7 +16,7 @@ import static homework21.utils.HelperFunc.getOrderMessage;
 public class SaucedemoComTest extends BaseTest {
 
     @Test
-    public void BuyAndCheckItemInCart() {
+    public void buyAndCheckItemInCart() {
 
         CartPage cartPage = openLoginPage()
                 .login("standard_user", "secret_sauce")
