@@ -15,6 +15,6 @@ public class BookDataDTO {
     private String title;
     private String author;
     private String category;
-    private Float price;
+    private Double price;
     private String coverFileName;
 }
