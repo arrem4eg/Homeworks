@@ -3,10 +3,10 @@ package homework23.ui;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
-    private String quantityInCart = "1";
     static final SelenideElement searchBox = $(".mat-autocomplete-trigger");
     static final SelenideElement confirmSearch = $("span.mat-option-text");
     static final SelenideElement addToCartBtn = $("app-addtocart>button");
@@ -31,7 +31,7 @@ public class MainPage {
         return new LoginPage();
     }
 
-    public CartPage goToCartPage() {
+    public CartPage goToCartPage(String quantityInCart) {
         badge0.shouldHave(text(quantityInCart));
         cartBtn.click();
         return new CartPage();
